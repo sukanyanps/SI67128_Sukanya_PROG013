@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://kit.fontawesome.com/dbe33c5d6c.js" crossorigin="anonymous"></script>
+            <style>
+                input[type=text], select {
+                    width: 50%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+
+                input[type=password], select {
+                    width: 25%;
+                    padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                }
+            </style>
+    </head>
+    <body>
+        <div class="container">
+           <h1 style="text-align: center;">สมาชิก <i class="fas fa-building"></i></h1> 
+
+           <nav class="navbar navbar-expand-sm">
+            <form class="form-inline" action="/action_page.php">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-success" type="submit">Search</button>
+              <button type="button" class="add ml-2" id="add" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-plus"></i> Add</button>           
+            </form>
+          </nav>
+          
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">เพิ่มข้อมูลสมาชิก</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-3" style="text-align: right;">
+                                    <p>ประเภท<span style="color: red;">*</span> :</p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" name="option1" required>
+                                    <label for="">External</label>
+                                    <input type="radio" name="option1">
+                                    <label for="">Internal</label>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p>ประเภทลูกค้า<span style="color: red;">*</span> :</p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" name="option2" required>
+                                    <label for="">นิติบุคคล</label>
+                                    <input type="radio" name="option2">
+                                    <label for="">นิติบุคคลธรรมดา</label>
+                                </div>
+                                
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="fname">ชื่อ<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="fname" name="firstname" placeholder="ชื่อ">
+                                </div>
+                                
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="fname">นามสกุล<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="fname" name="firstname" placeholder="นามสกุล">
+                                </div>
+                            
+                                <div class="col-3"style="text-align: right;">
+                                    <p>เพศ<span style="color: red;">*</span> :</p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" name="option3" required>
+                                    <label for="">ชาย</label>
+                                    <input type="radio" name="option3">
+                                    <label for="">หญิง</label>
+                                    <input type="radio" name="option3">
+                                    <label for="">ไม่ระบุ</label>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="fname">รหัสผู้ใช้<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="fname" name="firstname" placeholder="Username">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p></p><label for="password">รหัสผ่าน<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="password" id="password" name="password" placeholder="password">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p></p><label for="nationalID">เลขที่บัตรประชาชน/เลขที่เสียภาษี<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="nationalID" name="nationalID" placeholder="เลขที่บัตรประชาชน/เลขที่เสียภาษี">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="fname">วันเกิด<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="date" id="fname" name="firstname">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="nameCompany">ชื่อบริษัท<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="nameCompany" name="nameCompany" placeholder="ชื่อบริษัท">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="branch">สาขา<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="branch" name="branch" placeholder="สาขา">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="start">เริ่มต้น<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="date" id="start" name="start">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="end">สิ้นสุด<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="date" id="end" name="end">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="position">ตำแหน่ง<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <select name="position" id="position">
+                                        <option disabled hidden selected>กรุณาเลือกรายการ</option>
+                                        <option value="president">ประธานบริษัท</option>
+                                        <option value="employee">ลูกจ้าง</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="Department ">แผนก<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <select name="Department " id="Department " required>
+                                        <option disabled hidden selected>กรุณาเลือกรายการ</option>
+                                        <option value="">แผนกบัญชี</option>
+                                        <option value="">แผนกบุคคล</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="agency">หน่วยงาน<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <select name="agency" id="agency" required>
+                                        <option disabled hidden selected>กรุณาเลือกรายการ</option>
+                                        <option value="">หน่วยงาน1</option>
+                                        <option value="">หน่วยงาน2</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="mail">อีเมล<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="mail" name="mail" placeholder="อีเมล" required>
+                                </div>
+
+                                <div class="col-12" style="text-align: center;">
+                                    <p><label for="number">เลขที่<span style="color: red;">*</span> :</label>
+                                        <input type="text" style="width: 10%;" id="number" name="number" placeholder="เลขที่">
+                                        <label for="building">อาคาร<span style="color: red;">*</span> :</label>
+                                        <input type="text" style="width: 10%;" id="building" name="building" placeholder="อาคาร">
+                                        <br>
+                                        <label for="moo">หมู่<span style="color: red;">*</span> :</label>
+                                        <input type="text" style="width: 10%;" id="moo" name="moo" placeholder="หมู่">
+                                        <label for="rd">ถนน<span style="color: red;">*</span> :</label>
+                                        <input type="text" style="width: 10%;" id="rd" name="rd" placeholder="ถนน">
+                                    </p>
+                                </div>
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="address">ตำบล/อำเภอ/จังหวัด/รหัสไปรษณีย์<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <select name="address" id="address" required>
+                                        <option disabled hidden selected>กรุณาเลือกรายการ</option>
+                                        <option value="address1">ที่อยู่1</option>
+                                        <option value="address">ที่อยู่2</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="phone">เบอร์โทรศัพท์<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="phone" name="phone" placeholder="เบอร์โทรศัพท์" required>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="money">วงเงิน:</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="money" name="money" placeholder="200,000" disabled>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="remain">วงเงินคงเหลือ:</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="remain" name="remain" placeholder="วงเงินคงเหลือ">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="moremoney">วงเงินเกิน:</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="moremoney" name="moremoney" placeholder="วงเงินเกิน">
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="nameCompany">สิทธิ์การใช้งาน:</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="checkbox" id="nameCompany" name="nameCompany">
+                                    <label for="">ลูกค้า</label>
+                                    <input type="checkbox" id="nameCompany" name="nameCompany">
+                                    <label for="">บุรุษไปรษณีย์</label>
+                                    <input type="checkbox" id="nameCompany" name="nameCompany">
+                                    <label for="">ผู้ดูแลรักษาระบบ</label>
+                                    <input type="checkbox" id="nameCompany" name="nameCompany">
+                                    <label for="">ผู้ดูแล Dashboard</label>
+                                    <input type="checkbox" id="nameCompany" name="nameCompany">
+                                    <label for="">Admin</label>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p>สิทธิ์การพิมพ์สแตมป์: </p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="radio" name="option2" required>
+                                    <label for="">ไม่มีสิทธิ</label>
+                                    <input type="radio" name="option2">
+                                    <label for="">มีสิทธิ</label>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="nameCompany">เพิ่มตู้<span style="color: red;">*</span> :</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="nameCompany" name="nameCompany">
+                                    <i class="far fa-plus-square"></i>
+                                </div>
+
+                                <div class="col-3"style="text-align: right;">
+                                    <p><label for="start">สถานะ:</label></p>
+                                </div>
+                                <div class="col-9">
+                                    <select name="" id="">
+                                        <option value="">Active</option>
+                                        <option value="">Inactive</option>
+                                    </select>
+                                </div>
+
+                            </div> 
+                        </form>
+                    
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success">Save</button>
+
+                    </div>
+                </div>
+            </div>
+          </div>
+          
+          <table class="table table-bordered">
+            <thead style="background-color: rgb(168, 111, 41);">
+                <tr>
+                    <th>No.</th>
+                    <th>ชื่อ</th>
+                    <th>ประเภท</th>
+                    <th>สาขา</th>
+                    <th>สิทธิ์การใช้งาน</th>
+                    <th>สถานะ</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody style="background-color: rgb(240, 218, 192);">
+                <tr>
+                    <td>1</td>
+                    <td>จิรภัทร ศรีบุญเรือง</td>
+                    <td>พนักงาน</td>
+                    <td>เมืองสมุทรสาคร</td>
+                    <td>Admin</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-danger" type="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-primary" type="delete"><i class="fas fa-wrench"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>ชัชชาติ สิทธิพันธุ์</td>
+                    <td>บุคคลธรรมดา</td>
+                    <td>รังสิต</td>
+                    <td>ลูกค้า</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-danger" type="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-primary" type="delete"><i class="fas fa-wrench"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>บริษัท Soft Square</td>
+                    <td>นิติบุคคล</td>
+                    <td>เมืองปทุมธานี</td>
+                    <td>ลูกค้า</td>
+                    <td>Inactive</td>
+                    <td>
+                        <button class="btn btn-danger" type="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-primary" type="delete"><i class="fas fa-wrench"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>ดอมมินิก โทเรตโต้</td>
+                    <td>พนักงาน</td>
+                    <td>เมืองปทุมธานี</td>
+                    <td>บุรุษไปรษณีย์</td>
+                    <td>Active</td>
+                    <td>
+                        <button class="btn btn-danger" type="delete"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-primary" type="delete"><i class="fas fa-wrench"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+
+          </table>
+        </div>
+    </body>
+</html>
